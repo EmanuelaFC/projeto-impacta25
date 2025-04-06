@@ -1,9 +1,11 @@
 // app.js
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const connection = require('./configdb/db');  // Importa a conexão com o banco de dados
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());  // Para analisar o corpo das requisições como JSON
 
 // Endpoint para criar o usuário e associar interesses, experiências e disponibilidade
@@ -23,16 +25,20 @@ app.post('/inscricao', (req, res) => {
 
     // Inserir o usuário na tabela de usuarios
     const queryUsuario = 'INSERT INTO usuarios (nome, email, telefone, interesse, descricao) VALUES (?, ?, ?, ?, ?)';
-    connection.query(queryUsuario, [nome, email, telefone, interesse, descricao], (err, result) => {
-      if (err) {
-        return connection.rollback(() => {
-          res.status(500).json({ error: 'Erro ao criar usuário', details: err });
-        });
-      }
-      if (res) {
-        res.status(201).json({ message: 'Usuário cadastrado com sucesso!'})
-      }
-    })
+    if(telefone.length <11){
+      return res.status(400).json({ message: 'Telefone inválido'})
+    }else{
+      connection.query(queryUsuario, [nome, email, telefone, interesse, descricao], (err, result) => {
+        if (err) {
+          return connection.rollback(() => {
+            res.status(500).json({ error: 'Erro ao criar usuário', details: err });
+          });
+        }
+        if (res) {
+          res.status(201).json({ message: 'Usuário cadastrado com sucesso!'})
+        }
+      })
+    }
   });
 });
 

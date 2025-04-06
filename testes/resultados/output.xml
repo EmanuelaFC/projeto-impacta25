@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.11.3 on win32)" generated="2025-04-06T20:42:04.650520" rpa="false" schemaversion="5">
+<suite id="s1" name="Teste Front" source="C:\Users\emanu\Desktop\projeto-impacta25\testes\teste_front.robot">
+<test id="s1-t1" name="Caso de teste 01 - Inscrição válida" line="8">
+<kw name="Abrir o navegador" owner="teste_resources" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-04-06T20:42:04.833074" level="INFO">Opening browser 'chrome' to base url 'None'.</msg>
+<arg>browser=${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-04-06T20:42:04.833074" elapsed="1.740503"/>
+</kw>
+<status status="PASS" start="2025-04-06T20:42:04.833074" elapsed="1.740503"/>
+</kw>
+<kw name="Acessar a page do formulário" owner="teste_resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-04-06T20:42:06.573577" level="INFO">Opening url 'file:///C:/Users/emanu/Desktop/projeto-impacta25/frontend/index.html?nome=Emanuela+Felix&amp;email=emanuela.felix%40hotmail.com&amp;telefone=&amp;interesse=plantio&amp;experiencia=xxxx'</msg>
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-04-06T20:42:06.573577" elapsed="0.132584"/>
+</kw>
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2025-04-06T20:42:06.714827" level="INFO">Page title is 'Formulário de Inscrição - Ativismo Ambiental'.</msg>
+<arg>Formulário de Inscrição - Ativismo Ambiental</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2025-04-06T20:42:06.706161" elapsed="0.008666"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${NOME}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-06T20:42:06.714827" elapsed="0.021747"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${EMAIL}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-06T20:42:06.736574" elapsed="0.015934"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${TELEFONE}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-06T20:42:06.752508" elapsed="0.015824"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INTERESSE}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-06T20:42:06.768332" elapsed="0.005023"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${EXPERIENCIA}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-06T20:42:06.773355" elapsed="0.018898"/>
+</kw>
+<status status="PASS" start="2025-04-06T20:42:06.573577" elapsed="0.218676"/>
+</kw>
+<kw name="Verificar se aparece o título &quot;Inscrição para Participar do Grupo de Ativismo Ambiental&quot;" owner="teste_resources" source_name="Verificar se aparece o título &quot;${TITULO}&quot;">
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>${TITULO}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-04-06T20:42:06.792253" elapsed="0.016191"/>
+</kw>
+<status status="PASS" start="2025-04-06T20:42:06.792253" elapsed="0.016191"/>
+</kw>
+<kw name="Inserir Nome Completo &quot;Joana da Silva&quot;" owner="teste_resources">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-06T20:42:06.808444" level="INFO">Typing text 'Joana da Silva' into text field 'id=nome'.</msg>
+<arg>${NOME}</arg>
+<arg>Joana da Silva</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-06T20:42:06.808444" elapsed="0.085719"/>
+</kw>
+<status status="PASS" start="2025-04-06T20:42:06.808444" elapsed="0.085719"/>
+</kw>
+<kw name="Inserir E-mail &quot;joanasilva@email.com&quot;" owner="teste_resources">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-06T20:42:06.895762" level="INFO">Typing text 'joanasilva@email.com' into text field 'id=email'.</msg>
+<arg>${EMAIL}</arg>
+<arg>joanasilva@email.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-06T20:42:06.895762" elapsed="0.062537"/>
+</kw>
+<status status="PASS" start="2025-04-06T20:42:06.894730" elapsed="0.063569"/>
+</kw>
+<kw name="Inserir Telefone &quot;11 98657724&quot;" owner="teste_resources">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-06T20:42:06.967280" level="INFO">Typing text '11 98657724' into text field 'id=telefone'.</msg>
+<arg>${TELEFONE}</arg>
+<arg>11 98657724</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-06T20:42:06.967280" elapsed="0.057177"/>
+</kw>
+<status status="PASS" start="2025-04-06T20:42:06.958299" elapsed="0.066158"/>
+</kw>
+<kw name="Selecionar a Área de Interesse de sua escolha" owner="teste_resources">
+<kw name="Select From List By Value" owner="SeleniumLibrary">
+<msg time="2025-04-06T20:42:07.024457" level="INFO">Selecting options from selection list 'id=interesse' by value limpeza.</msg>
+<arg>${INTERESSE}</arg>
+<arg>limpeza</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<status status="PASS" start="2025-04-06T20:42:07.024457" elapsed="0.049749"/>
+</kw>
+<status status="PASS" start="2025-04-06T20:42:07.024457" elapsed="0.049749"/>
+</kw>
+<kw name="Responder a pergunta &quot;Por que você quer participar?&quot;" owner="teste_resources">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-06T20:42:07.074206" level="INFO">Typing text 'Porque tenho vontade de ver meu bairro limpo, por isso gostaria de me inscrever nesse projeto e contribuir com essa ação.' into text field 'id=experiencia'.</msg>
+<arg>${EXPERIENCIA}</arg>
+<arg>Porque tenho vontade de ver meu bairro limpo, por isso gostaria de me inscrever nesse projeto e contribuir com essa ação.</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-06T20:42:07.074206" elapsed="0.149198"/>
+</kw>
+<status status="PASS" start="2025-04-06T20:42:07.074206" elapsed="0.149198"/>
+</kw>
+<kw name="Fechar o navegador" owner="teste_resources" type="TEARDOWN">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-06T20:42:07.372522" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-06T20:42:07.223404" elapsed="0.149118"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-04-06T20:42:07.372522" elapsed="2.131824"/>
+</kw>
+<status status="PASS" start="2025-04-06T20:42:07.223404" elapsed="2.280942"/>
+</kw>
+<doc>Este teste verifica o envio válido de dados da inscrição.</doc>
+<tag>inscricao_valida</tag>
+<status status="PASS" start="2025-04-06T20:42:04.817400" elapsed="4.686946"/>
+</test>
+<test id="s1-t2" name="Caso de teste 02 - Inscrição invalida" line="20">
+<doc>Este teste verifica o envio invalido de dados da inscrição.</doc>
+<tag>inscricao_invalida</tag>
+<status status="FAIL" start="2025-04-06T20:42:09.504346" elapsed="0.000000">Test cannot be empty.</status>
+</test>
+<doc>Essa suite testa o formulário</doc>
+<status status="FAIL" start="2025-04-06T20:42:04.650520" elapsed="4.853826"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">inscricao_invalida</stat>
+<stat pass="1" fail="0" skip="0">inscricao_valida</stat>
+</tag>
+<suite>
+<stat name="Teste Front" id="s1" pass="1" fail="1" skip="0">Teste Front</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -10,7 +10,8 @@ document.getElementById('form-inscricao').addEventListener('submit', function (e
     fetch('http://localhost:3000/inscricao', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
       },
       body: JSON.stringify({
         nome,
@@ -21,7 +22,7 @@ document.getElementById('form-inscricao').addEventListener('submit', function (e
       })
     })
     .then(response => response.json())
-    .then(_data => alert('Inscrição realizada com sucesso!'))
-    .catch(_error => alert('Erro ao enviar os dados!'));
+    .then(data => alert(data.body))
+    .catch(error => alert('Erro ao enviar os dados!'));
   });
   
