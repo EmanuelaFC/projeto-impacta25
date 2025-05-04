@@ -1,150 +1,293 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.11.3 on win32)" generated="2025-04-06T20:42:04.650520" rpa="false" schemaversion="5">
-<suite id="s1" name="Teste Front" source="C:\Users\emanu\Desktop\projeto-impacta25\testes\teste_front.robot">
-<test id="s1-t1" name="Caso de teste 01 - Inscrição válida" line="8">
-<kw name="Abrir o navegador" owner="teste_resources" type="SETUP">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-04-06T20:42:04.833074" level="INFO">Opening browser 'chrome' to base url 'None'.</msg>
-<arg>browser=${BROWSER}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-04-06T20:42:04.833074" elapsed="1.740503"/>
+<robot generator="Robot 7.2.2 (Python 3.11.3 on win32)" generated="2025-05-04T20:08:04.974400" rpa="false" schemaversion="5">
+<suite id="s1" name="Teste Resouces" source="C:\Users\emanu\Desktop\projeto-impacta25\testes\teste_resouces.robot">
+<test id="s1-t1" name="Enviar Inscricao Com Sucesso" line="10">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-04T20:08:05.036546" level="INFO">${BODY} = {'nome': 'João', 'email': 'jpauloii@teste.com', 'telefone': '11956872456', 'interesse': 'outros', 'descricao': 'agro'}</msg>
+<var>${BODY}</var>
+<arg>nome=João</arg>
+<arg>email=jpauloii@teste.com</arg>
+<arg>telefone=11956872456</arg>
+<arg>interesse=outros</arg>
+<arg>descricao=agro</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-04T20:08:05.036546" elapsed="0.000000"/>
 </kw>
-<status status="PASS" start="2025-04-06T20:42:04.833074" elapsed="1.740503"/>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-05-04T20:08:05.052653" level="INFO">Creating Session using : alias=minha_api, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>minha_api</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-05-04T20:08:05.052653" elapsed="0.000000"/>
 </kw>
-<kw name="Acessar a page do formulário" owner="teste_resources">
-<kw name="Go To" owner="SeleniumLibrary">
-<msg time="2025-04-06T20:42:06.573577" level="INFO">Opening url 'file:///C:/Users/emanu/Desktop/projeto-impacta25/frontend/index.html?nome=Emanuela+Felix&amp;email=emanuela.felix%40hotmail.com&amp;telefone=&amp;interesse=plantio&amp;experiencia=xxxx'</msg>
-<arg>${URL}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2025-04-06T20:42:06.573577" elapsed="0.132584"/>
+<kw name="Post Request" owner="RequestsLibrary">
+<msg time="2025-05-04T20:08:05.052653" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2025-05-04T20:08:05.058319" level="INFO">POST Request : url=http://localhost:3000/inscricao 
+ path_url=/inscricao 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '123'} 
+ body=b'{"nome": "Jo\\u00e3o", "email": "jpauloii@teste.com", "telefone": "11956872456", "interesse": "outros", "descricao": "agro"}' 
+ </msg>
+<msg time="2025-05-04T20:08:05.058319" level="INFO">POST Response : url=http://localhost:3000/inscricao 
+ status=201, reason=Created 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '46', 'ETag': 'W/"2e-8AFU0u8Zx+r0An+TPRKuj4qoA4c"', 'Date': 'Sun, 04 May 2025 23:08:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"message":"Usuário cadastrado com sucesso!"} 
+ </msg>
+<msg time="2025-05-04T20:08:05.058319" level="INFO">${RESPONSE} = &lt;Response [201]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>minha_api</arg>
+<arg>${ENDPOINT}</arg>
+<arg>json=${BODY}</arg>
+<arg>headers=${HEADERS}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<status status="PASS" start="2025-05-04T20:08:05.052653" elapsed="0.005666"/>
 </kw>
-<kw name="Title Should Be" owner="SeleniumLibrary">
-<msg time="2025-04-06T20:42:06.714827" level="INFO">Page title is 'Formulário de Inscrição - Ativismo Ambiental'.</msg>
-<arg>Formulário de Inscrição - Ativismo Ambiental</arg>
-<doc>Verifies that the current page title equals ``title``.</doc>
-<status status="PASS" start="2025-04-06T20:42:06.706161" elapsed="0.008666"/>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-04T20:08:05.058319" level="INFO">201</msg>
+<arg>${RESPONSE.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-04T20:08:05.058319" elapsed="0.000000"/>
 </kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${NOME}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-04-06T20:42:06.714827" elapsed="0.021747"/>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-04T20:08:05.058319" level="INFO">{"message":"Usuário cadastrado com sucesso!"}</msg>
+<arg>${RESPONSE.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-04T20:08:05.058319" elapsed="0.000000"/>
 </kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${EMAIL}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-04-06T20:42:06.736574" elapsed="0.015934"/>
+<kw name="Request Should Be Successful" owner="RequestsLibrary">
+<doc>Fails if response status code is a client or server error (4xx, 5xx).</doc>
+<status status="PASS" start="2025-05-04T20:08:05.058319" elapsed="0.000000"/>
 </kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${TELEFONE}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-04-06T20:42:06.752508" elapsed="0.015824"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${INTERESSE}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-04-06T20:42:06.768332" elapsed="0.005023"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${EXPERIENCIA}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-04-06T20:42:06.773355" elapsed="0.018898"/>
-</kw>
-<status status="PASS" start="2025-04-06T20:42:06.573577" elapsed="0.218676"/>
-</kw>
-<kw name="Verificar se aparece o título &quot;Inscrição para Participar do Grupo de Ativismo Ambiental&quot;" owner="teste_resources" source_name="Verificar se aparece o título &quot;${TITULO}&quot;">
-<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
-<arg>${TITULO}</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" start="2025-04-06T20:42:06.792253" elapsed="0.016191"/>
-</kw>
-<status status="PASS" start="2025-04-06T20:42:06.792253" elapsed="0.016191"/>
-</kw>
-<kw name="Inserir Nome Completo &quot;Joana da Silva&quot;" owner="teste_resources">
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-04-06T20:42:06.808444" level="INFO">Typing text 'Joana da Silva' into text field 'id=nome'.</msg>
-<arg>${NOME}</arg>
-<arg>Joana da Silva</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-04-06T20:42:06.808444" elapsed="0.085719"/>
-</kw>
-<status status="PASS" start="2025-04-06T20:42:06.808444" elapsed="0.085719"/>
-</kw>
-<kw name="Inserir E-mail &quot;joanasilva@email.com&quot;" owner="teste_resources">
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-04-06T20:42:06.895762" level="INFO">Typing text 'joanasilva@email.com' into text field 'id=email'.</msg>
-<arg>${EMAIL}</arg>
-<arg>joanasilva@email.com</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-04-06T20:42:06.895762" elapsed="0.062537"/>
-</kw>
-<status status="PASS" start="2025-04-06T20:42:06.894730" elapsed="0.063569"/>
-</kw>
-<kw name="Inserir Telefone &quot;11 98657724&quot;" owner="teste_resources">
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-04-06T20:42:06.967280" level="INFO">Typing text '11 98657724' into text field 'id=telefone'.</msg>
-<arg>${TELEFONE}</arg>
-<arg>11 98657724</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-04-06T20:42:06.967280" elapsed="0.057177"/>
-</kw>
-<status status="PASS" start="2025-04-06T20:42:06.958299" elapsed="0.066158"/>
-</kw>
-<kw name="Selecionar a Área de Interesse de sua escolha" owner="teste_resources">
-<kw name="Select From List By Value" owner="SeleniumLibrary">
-<msg time="2025-04-06T20:42:07.024457" level="INFO">Selecting options from selection list 'id=interesse' by value limpeza.</msg>
-<arg>${INTERESSE}</arg>
-<arg>limpeza</arg>
-<doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<status status="PASS" start="2025-04-06T20:42:07.024457" elapsed="0.049749"/>
-</kw>
-<status status="PASS" start="2025-04-06T20:42:07.024457" elapsed="0.049749"/>
-</kw>
-<kw name="Responder a pergunta &quot;Por que você quer participar?&quot;" owner="teste_resources">
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-04-06T20:42:07.074206" level="INFO">Typing text 'Porque tenho vontade de ver meu bairro limpo, por isso gostaria de me inscrever nesse projeto e contribuir com essa ação.' into text field 'id=experiencia'.</msg>
-<arg>${EXPERIENCIA}</arg>
-<arg>Porque tenho vontade de ver meu bairro limpo, por isso gostaria de me inscrever nesse projeto e contribuir com essa ação.</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-04-06T20:42:07.074206" elapsed="0.149198"/>
-</kw>
-<status status="PASS" start="2025-04-06T20:42:07.074206" elapsed="0.149198"/>
-</kw>
-<kw name="Fechar o navegador" owner="teste_resources" type="TEARDOWN">
-<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
-<msg time="2025-04-06T20:42:07.372522" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
-<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<status status="PASS" start="2025-04-06T20:42:07.223404" elapsed="0.149118"/>
-</kw>
-<kw name="Close Browser" owner="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-04-06T20:42:07.372522" elapsed="2.131824"/>
-</kw>
-<status status="PASS" start="2025-04-06T20:42:07.223404" elapsed="2.280942"/>
-</kw>
-<doc>Este teste verifica o envio válido de dados da inscrição.</doc>
-<tag>inscricao_valida</tag>
-<status status="PASS" start="2025-04-06T20:42:04.817400" elapsed="4.686946"/>
+<status status="PASS" start="2025-05-04T20:08:05.036546" elapsed="0.021773"/>
 </test>
-<test id="s1-t2" name="Caso de teste 02 - Inscrição invalida" line="20">
-<doc>Este teste verifica o envio invalido de dados da inscrição.</doc>
-<tag>inscricao_invalida</tag>
-<status status="FAIL" start="2025-04-06T20:42:09.504346" elapsed="0.000000">Test cannot be empty.</status>
+<test id="s1-t2" name="Enviar Inscricao Com Erro de campo Nome vazio" line="25">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-04T20:08:05.058319" level="INFO">${BODY} = {'nome': '', 'email': 'jpauloii@teste.com', 'telefone': '11956872456', 'interesse': 'outros', 'descricao': 'agro'}</msg>
+<var>${BODY}</var>
+<arg>nome=</arg>
+<arg>email=jpauloii@teste.com</arg>
+<arg>telefone=11956872456</arg>
+<arg>interesse=outros</arg>
+<arg>descricao=agro</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-04T20:08:05.058319" elapsed="0.010020"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-05-04T20:08:05.068339" level="INFO">Creating Session using : alias=minha_api, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>minha_api</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-05-04T20:08:05.068339" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-05-04T20:08:05.071870" level="INFO">POST Request : url=http://localhost:3000/inscricao 
+ path_url=/inscricao 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '114'} 
+ body=b'{"nome": "", "email": "jpauloii@teste.com", "telefone": "11956872456", "interesse": "outros", "descricao": "agro"}' 
+ </msg>
+<msg time="2025-05-04T20:08:05.071870" level="INFO">POST Response : url=http://localhost:3000/inscricao 
+ status=400, reason=Bad Request 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '53', 'ETag': 'W/"35-wbpisP8t2zJ0Z0qtXRvmvfx6SIE"', 'Date': 'Sun, 04 May 2025 23:08:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"error":"Nome, email e telefone são obrigatórios"} 
+ </msg>
+<msg time="2025-05-04T20:08:05.072868" level="INFO">${RESPONSE} = &lt;Response [400]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>minha_api</arg>
+<arg>${ENDPOINT}</arg>
+<arg>json=${BODY}</arg>
+<arg>headers=${HEADERS}</arg>
+<arg>expected_status=400</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-05-04T20:08:05.068339" elapsed="0.004529"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-04T20:08:05.073867" level="INFO">400</msg>
+<arg>${RESPONSE.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-04T20:08:05.072868" elapsed="0.000999"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-04T20:08:05.074618" level="INFO">{"error":"Nome, email e telefone são obrigatórios"}</msg>
+<arg>${RESPONSE.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-04T20:08:05.073867" elapsed="0.000751"/>
+</kw>
+<status status="PASS" start="2025-05-04T20:08:05.058319" elapsed="0.017313"/>
 </test>
-<doc>Essa suite testa o formulário</doc>
-<status status="FAIL" start="2025-04-06T20:42:04.650520" elapsed="4.853826"/>
+<test id="s1-t3" name="Enviar Inscricao Com Erro de campo Email vazio" line="39">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-04T20:08:05.076638" level="INFO">${BODY} = {'nome': 'Emanuela', 'email': '', 'telefone': '11956872456', 'interesse': 'outros', 'descricao': 'agro'}</msg>
+<var>${BODY}</var>
+<arg>nome=Emanuela</arg>
+<arg>email=</arg>
+<arg>telefone=11956872456</arg>
+<arg>interesse=outros</arg>
+<arg>descricao=agro</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-04T20:08:05.075632" elapsed="0.001006"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-05-04T20:08:05.076638" level="INFO">Creating Session using : alias=minha_api, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>minha_api</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-05-04T20:08:05.076638" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-05-04T20:08:05.079636" level="INFO">POST Request : url=http://localhost:3000/inscricao 
+ path_url=/inscricao 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '104'} 
+ body=b'{"nome": "Emanuela", "email": "", "telefone": "11956872456", "interesse": "outros", "descricao": "agro"}' 
+ </msg>
+<msg time="2025-05-04T20:08:05.079636" level="INFO">POST Response : url=http://localhost:3000/inscricao 
+ status=400, reason=Bad Request 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '53', 'ETag': 'W/"35-wbpisP8t2zJ0Z0qtXRvmvfx6SIE"', 'Date': 'Sun, 04 May 2025 23:08:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"error":"Nome, email e telefone são obrigatórios"} 
+ </msg>
+<msg time="2025-05-04T20:08:05.079636" level="INFO">${RESPONSE} = &lt;Response [400]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>minha_api</arg>
+<arg>${ENDPOINT}</arg>
+<arg>json=${BODY}</arg>
+<arg>headers=${HEADERS}</arg>
+<arg>expected_status=400</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-05-04T20:08:05.076638" elapsed="0.002998"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-04T20:08:05.079636" level="INFO">400</msg>
+<arg>${RESPONSE.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-04T20:08:05.079636" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-04T20:08:05.080637" level="INFO">{"error":"Nome, email e telefone são obrigatórios"}</msg>
+<arg>${RESPONSE.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-04T20:08:05.080637" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-04T20:08:05.075632" elapsed="0.005005"/>
+</test>
+<test id="s1-t4" name="Enviar Inscricao Com Erro de campo Telefone vazio" line="53">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-04T20:08:05.082388" level="INFO">${BODY} = {'nome': 'Emanuela', 'email': 'jpauloii@teste.com', 'telefone': '', 'interesse': 'outros', 'descricao': 'agro'}</msg>
+<var>${BODY}</var>
+<arg>nome=Emanuela</arg>
+<arg>email=jpauloii@teste.com</arg>
+<arg>telefone=</arg>
+<arg>interesse=outros</arg>
+<arg>descricao=agro</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-04T20:08:05.082388" elapsed="0.000000"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-05-04T20:08:05.082757" level="INFO">Creating Session using : alias=minha_api, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>minha_api</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-05-04T20:08:05.082757" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-05-04T20:08:05.085154" level="INFO">POST Request : url=http://localhost:3000/inscricao 
+ path_url=/inscricao 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '111'} 
+ body=b'{"nome": "Emanuela", "email": "jpauloii@teste.com", "telefone": "", "interesse": "outros", "descricao": "agro"}' 
+ </msg>
+<msg time="2025-05-04T20:08:05.085154" level="INFO">POST Response : url=http://localhost:3000/inscricao 
+ status=400, reason=Bad Request 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '53', 'ETag': 'W/"35-wbpisP8t2zJ0Z0qtXRvmvfx6SIE"', 'Date': 'Sun, 04 May 2025 23:08:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"error":"Nome, email e telefone são obrigatórios"} 
+ </msg>
+<msg time="2025-05-04T20:08:05.085154" level="INFO">${RESPONSE} = &lt;Response [400]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>minha_api</arg>
+<arg>${ENDPOINT}</arg>
+<arg>json=${BODY}</arg>
+<arg>headers=${HEADERS}</arg>
+<arg>expected_status=400</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-05-04T20:08:05.083119" elapsed="0.002035"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-04T20:08:05.085733" level="INFO">400</msg>
+<arg>${RESPONSE.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-04T20:08:05.085733" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-04T20:08:05.085733" level="INFO">{"error":"Nome, email e telefone são obrigatórios"}</msg>
+<arg>${RESPONSE.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-04T20:08:05.085733" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-04T20:08:05.080637" elapsed="0.005096"/>
+</test>
+<test id="s1-t5" name="Enviar Inscricao Com Erro de campo Telefone com menos de 11 digitos" line="67">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-04T20:08:05.087683" level="INFO">${BODY} = {'nome': 'Emanuela', 'email': 'jpauloii@teste.com', 'telefone': '111', 'interesse': 'outros', 'descricao': 'agro'}</msg>
+<var>${BODY}</var>
+<arg>nome=Emanuela</arg>
+<arg>email=jpauloii@teste.com</arg>
+<arg>telefone=111</arg>
+<arg>interesse=outros</arg>
+<arg>descricao=agro</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-04T20:08:05.087683" elapsed="0.000000"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-05-04T20:08:05.087683" level="INFO">Creating Session using : alias=minha_api, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>minha_api</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-05-04T20:08:05.087683" elapsed="0.000728"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-05-04T20:08:05.093432" level="INFO">POST Request : url=http://localhost:3000/inscricao 
+ path_url=/inscricao 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '114'} 
+ body=b'{"nome": "Emanuela", "email": "jpauloii@teste.com", "telefone": "111", "interesse": "outros", "descricao": "agro"}' 
+ </msg>
+<msg time="2025-05-04T20:08:05.093432" level="INFO">POST Response : url=http://localhost:3000/inscricao 
+ status=400, reason=Bad Request 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '32', 'ETag': 'W/"20-Bq21a5K3lX10WwPqmwZGSXIurSQ"', 'Date': 'Sun, 04 May 2025 23:08:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"message":"Telefone inválido"} 
+ </msg>
+<msg time="2025-05-04T20:08:05.093432" level="INFO">${RESPONSE} = &lt;Response [400]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>minha_api</arg>
+<arg>${ENDPOINT}</arg>
+<arg>json=${BODY}</arg>
+<arg>headers=${HEADERS}</arg>
+<arg>expected_status=400</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-05-04T20:08:05.088411" elapsed="0.005021"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-04T20:08:05.093432" level="INFO">400</msg>
+<arg>${RESPONSE.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-04T20:08:05.093432" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-04T20:08:05.093432" level="INFO">{"message":"Telefone inválido"}</msg>
+<arg>${RESPONSE.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-04T20:08:05.093432" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-04T20:08:05.086743" elapsed="0.006689"/>
+</test>
+<status status="PASS" start="2025-05-04T20:08:04.976406" elapsed="0.117026"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="1" skip="0">All Tests</stat>
+<stat pass="5" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="0" fail="1" skip="0">inscricao_invalida</stat>
-<stat pass="1" fail="0" skip="0">inscricao_valida</stat>
 </tag>
 <suite>
-<stat name="Teste Front" id="s1" pass="1" fail="1" skip="0">Teste Front</stat>
+<stat name="Teste Resouces" id="s1" pass="5" fail="0" skip="0">Teste Resouces</stat>
 </suite>
 </statistics>
 <errors>
+<msg time="2025-05-04T20:08:05.052653" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
 </errors>
 </robot>

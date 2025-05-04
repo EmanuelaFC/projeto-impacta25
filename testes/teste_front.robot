@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     Essa suite testa o formulário
-Resource    teste_resources.robot
+Resource    teste_resources_front.robot
 Test Setup    Abrir o navegador
 Test Teardown    Fechar o navegador
 
@@ -15,8 +15,18 @@ Caso de teste 01 - Inscrição válida
     Inserir Telefone "11 98657724"
     Selecionar a Área de Interesse de sua escolha
     Responder a pergunta "Por que você quer participar?"
-
+    Clicar no botão Enviar Inscrição
+    Confirmar sucesso da inscrição
 
 Caso de teste 02 - Inscrição invalida
     [Documentation]    Este teste verifica o envio invalido de dados da inscrição.
     [Tags]    inscricao_invalida
+    Acessar a page do formulário
+    Verificar se aparece o título "Inscrição para Participar do Grupo de Ativismo Ambiental"
+    Inserir Nome Completo " "
+    Inserir E-mail " "
+    Inserir Telefone " "
+    Selecionar a Área de Interesse de sua escolha
+    Responder a pergunta "Por que você quer participar?"
+    Clicar no botão Enviar Inscrição
+    Confirmar erro da inscrição

@@ -10,6 +10,7 @@ ${EMAIL}    id=email
 ${TELEFONE}    id=telefone
 ${INTERESSE}    id=interesse
 ${EXPERIENCIA}  id=experiencia
+${ENVIO}        css=button
 
 
 *** Keywords ***
@@ -30,13 +31,23 @@ Acessar a page do formulário
 
 Verificar se aparece o título "${TITULO}"
     Wait Until Page Contains   ${TITULO}
-Inserir Nome Completo "Joana da Silva"
-    Input Text    ${NOME}    Joana da Silva 
-Inserir E-mail "joanasilva@email.com"
-    Input Text    ${EMAIL}    joanasilva@email.com
-Inserir Telefone "11 98657724"
-    Input Text    ${TELEFONE}    11 98657724
+Inserir Nome Completo "${TEXTO_NOME}"
+    Input Text    ${NOME}    ${TEXTO_NOME} 
+Inserir E-mail "${TEXTO_EMAIL}"
+    Input Text    ${EMAIL}    ${TEXTO_EMAIL}
+Inserir Telefone "${TEXTO_TELEFONE}"
+    Input Text    ${TELEFONE}     ${TEXTO_TELEFONE}
 Selecionar a Área de Interesse de sua escolha
     Select From List By Value    ${INTERESSE}    limpeza
 Responder a pergunta "Por que você quer participar?"
     Input Text    ${EXPERIENCIA}    Porque tenho vontade de ver meu bairro limpo, por isso gostaria de me inscrever nesse projeto e contribuir com essa ação.
+
+Clicar no botão Enviar Inscrição
+    Click Button    ${ENVIO}
+Confirmar sucesso da inscrição
+    ${mensagem}  Handle Alert
+    Should Be Equal As Strings    ${mensagem}    Inscrição realizada com sucesso!
+
+Confirmar erro da inscrição
+    ${mensagem}  Handle Alert
+    Should Be Equal As Strings    ${mensagem}    Erro ao enviar os dados!

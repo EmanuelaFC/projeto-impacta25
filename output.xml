@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.11.3 on win32)" generated="2025-05-04T19:55:00.035794" rpa="false" schemaversion="5">
+<suite id="s1" name="Teste Resouces" source="c:\Users\emanu\Desktop\projeto-impacta25\testes\teste_resouces.robot">
+<test id="s1-t1" name="Enviar Inscricao Com Sucesso" line="10">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-04T19:55:00.170663" level="INFO">${BODY} = {'nome': 'João', 'email': 'jpauloii@teste.com', 'telefone': '11956872456', 'interesse': 'outros', 'descricao': 'agro'}</msg>
+<var>${BODY}</var>
+<arg>nome=João</arg>
+<arg>email=jpauloii@teste.com</arg>
+<arg>telefone=11956872456</arg>
+<arg>interesse=outros</arg>
+<arg>descricao=agro</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-04T19:55:00.170663" elapsed="0.014797"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-05-04T19:55:00.186459" level="INFO">Creating Session using : alias=minha_api, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>minha_api</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-05-04T19:55:00.186459" elapsed="0.000557"/>
+</kw>
+<kw name="Post Request" owner="RequestsLibrary">
+<msg time="2025-05-04T19:55:00.187016" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2025-05-04T19:55:00.206222" level="INFO">POST Request : url=http://localhost:3000/inscricao 
+ path_url=/inscricao 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '123'} 
+ body=b'{"nome": "Jo\\u00e3o", "email": "jpauloii@teste.com", "telefone": "11956872456", "interesse": "outros", "descricao": "agro"}' 
+ </msg>
+<msg time="2025-05-04T19:55:00.208228" level="INFO">POST Response : url=http://localhost:3000/inscricao 
+ status=201, reason=Created 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '46', 'ETag': 'W/"2e-8AFU0u8Zx+r0An+TPRKuj4qoA4c"', 'Date': 'Sun, 04 May 2025 22:55:00 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"message":"Usuário cadastrado com sucesso!"} 
+ </msg>
+<msg time="2025-05-04T19:55:00.208228" level="INFO">${RESPONSE} = &lt;Response [201]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>minha_api</arg>
+<arg>${ENDPOINT}</arg>
+<arg>json=${BODY}</arg>
+<arg>headers=${HEADERS}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<status status="PASS" start="2025-05-04T19:55:00.187016" elapsed="0.021212"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-04T19:55:00.209513" level="INFO">201</msg>
+<arg>${RESPONSE.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-04T19:55:00.208228" elapsed="0.001285"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-04T19:55:00.209513" level="INFO">{"message":"Usuário cadastrado com sucesso!"}</msg>
+<arg>${RESPONSE.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-04T19:55:00.209513" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-04T19:55:00.165323" elapsed="0.046196"/>
+</test>
+<status status="PASS" start="2025-05-04T19:55:00.054005" elapsed="0.158547"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Teste Resouces" id="s1" pass="1" fail="0" skip="0">Teste Resouces</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-05-04T19:55:00.187016" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+</errors>
+</robot>

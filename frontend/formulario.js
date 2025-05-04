@@ -21,8 +21,12 @@ document.getElementById('form-inscricao').addEventListener('submit', function (e
         experiencia,
       })
     })
-    .then(response => response.json())
-    .then(data => alert(data.body))
+    .then(response => {response.json()
+      console.log(response.status)
+      if(response.status == 201) alert('Inscrição realizada com sucesso!')
+      if(response.status == 400) alert('Erro ao enviar os dados!')
+    })
+    .then(data => console.log('dados enviados com sucesso'))
     .catch(error => alert('Erro ao enviar os dados!'));
   });
   

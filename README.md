@@ -9,30 +9,27 @@ Este projeto implementa um formulário de inscrição para que os usuários poss
 
 ## **Estrutura do Projeto**
 - **Frontend**: Testes de UI e preenchimento de formulário com **Cypress**.
-- **Backend**: Testes de API usando **Postman**.
-- **Banco de Dados**: Validação de dados com **TestContainers** ou **DBUnit**.
+- **Backend**: Testes de API usando **Robot Framework**.
+- **Banco de Dados**: Validação de dados com **DBeaver**.
 
-## **Como Rodar os Testes**
+## **Como Rodar os Testes com Robot Framework**
+- **Pré-requisitos**: Python instalado, pip instalado, 
+- **Instalar dependências**:pip install -r requirements.txt
 
-### **Frontend (Cypress)**
+## **Executar os Testes**
+- **Testes de Frontend**: Navegue até o diretório dos testes de frontend:
+cd testes
 
-1. **Instale as dependências**:
-    ```bash
-    npm install
-    ```
+Execute os testes:
+teste_front.robot
 
-2. **Abra o Cypress**:
-    ```bash
-    npm run cypress:open
-    ```
 
-### **Backend (Postman)**
+- **Testes de Backend**: Navegue até o diretório dos testes de backend:
+cd testes
 
-1. Importe as coleções do Postman do diretório `postman/`.
-2. Execute os testes no Postman.
+Execute os testes:
+teste_api_resources.robot
 
-### **Banco de Dados**
-
-1. Configure o banco de dados local ou de teste.
-2. Execute os testes de banco de dados com **TestContainers** ou **DBUnit**.
+- **Testes de Banco de Dados**: Configure o banco de dados local ou de teste.
+Execute os testes usando a ferramenta DBeaver, conforme configuração do ambiente.
 
