@@ -33,3 +33,6 @@ teste_api_resources.robot
 - **Testes de Banco de Dados**: Configure o banco de dados local ou de teste.
 Execute os testes usando a ferramenta DBeaver, conforme configuração do ambiente.
 
+## **Diagramas**
+- **Diagrama de Casos de Uso**: https://www.mermaidchart.com/app/projects/ec90dc90-43e2-414f-8773-8df8f6a9ebe9/diagrams/67fbc7a9-fda2-4745-8422-759dfc1f2d98/share/invite/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkb2N1bWVudElEIjoiNjdmYmM3YTktZmRhMi00NzQ1LTg0MjItNzU5ZGZjMWYyZDk4IiwiYWNjZXNzIjoiVmlldyIsImlhdCI6MTc0OTMwOTU1Mn0.HUTIK4gewYHQ3q_z2jE2ftw1K2Z0gkIaxLVlO5EDfZM
+-  **Diagrama de Classes**: https://www.mermaidchart.com/app/projects/ec90dc90-43e2-414f-8773-8df8f6a9ebe9/diagrams/a43a1848-863e-4a65-9104-12367ccb35e9/share/invite/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkb2N1bWVudElEIjoiYTQzYTE4NDgtODYzZS00YTY1LTkxMDQtMTIzNjdjY2IzNWU5IiwiYWNjZXNzIjoiVmlldyIsImlhdCI6MTc0OTMwOTE0NH0.3zBAKgeA_K2sMf1ct84hjrhs7maeHtyYHD2PSY1zNTI
